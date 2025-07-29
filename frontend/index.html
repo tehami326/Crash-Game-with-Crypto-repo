@@ -11,34 +11,36 @@
             color: #eee;
             text-align: center;
             padding-top: 80px;
+            margin: 0;
         }
 
         h1 {
             font-size: 2.5rem;
             margin-bottom: 30px;
-            color: #0ff;
+            color: #00ffff;
         }
 
         #multiplier {
-            font-size: 2.5rem;
+            font-size: 3rem;
             font-weight: bold;
             margin-bottom: 30px;
             color: #0f0;
         }
 
         #cashoutBtn {
-            padding: 12px 25px;
-            font-size: 1.2rem;
+            padding: 14px 30px;
+            font-size: 1.3rem;
             border: none;
-            background: #f39c12;
+            background: linear-gradient(to right, #ff416c, #ff4b2b);
             color: white;
             cursor: pointer;
-            border-radius: 6px;
-            transition: background 0.3s;
+            border-radius: 8px;
+            transition: transform 0.2s, background 0.3s;
         }
 
         #cashoutBtn:hover {
-            background: #e67e22;
+            background: linear-gradient(to right, #ff4b2b, #ff416c);
+            transform: scale(1.05);
         }
     </style>
 </head>
@@ -50,9 +52,8 @@
 
     <script src="https://cdn.socket.io/4.5.4/socket.io.min.js"></script>
     <script>
-        // ✅ Automatically connect to current domain (Render)
-        const socket = io("https://crypto-crash-game-fxpv.onrender.com");
 
+        const socket = io("https://crypto-crash-game-fxpv.onrender.com");
 
         socket.on("multiplier", (data) => {
             const display = document.getElementById("multiplier");
