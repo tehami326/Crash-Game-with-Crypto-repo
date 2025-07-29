@@ -50,7 +50,8 @@
 
     <script src="https://cdn.socket.io/4.5.4/socket.io.min.js"></script>
     <script>
-        const socket = io("http://localhost:5000");
+        // ✅ Automatically connect to current domain (Render)
+        const socket = io();
 
         socket.on("multiplier", (data) => {
             const display = document.getElementById("multiplier");
