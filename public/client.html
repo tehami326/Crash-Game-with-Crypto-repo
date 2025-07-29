@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Crypto Crash Client</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #111;
+            color: #eee;
+            text-align: center;
+            padding-top: 80px;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 30px;
+            color: #0ff;
+        }
+
+        #multiplier {
+            font-size: 2.5rem;
+            font-weight: bold;
+            margin-bottom: 30px;
+            color: #0f0;
+        }
+
+        #cashoutBtn {
+            padding: 12px 25px;
+            font-size: 1.2rem;
+            border: none;
+            background: #f39c12;
+            color: white;
+            cursor: pointer;
+            border-radius: 6px;
+            transition: background 0.3s;
+        }
+
+        #cashoutBtn:hover {
+            background: #e67e22;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Crypto Crash Game</h1>
+    <div id="multiplier">Multiplier: 1x</div>
+    <button id="cashoutBtn" onclick="cashOut()">💸 Cash Out</button>
+
+    <script src="https://cdn.socket.io/4.5.4/socket.io.min.js"></script>
+    <script>
+        const socket = io("http://localhost:5000");
+
+        socket.on("multiplier", (data) => {
+            const display = document.getElementById("multiplier");
+            display.innerText = `Multiplier: ${data.multiplier}x`;
+            if (data.multiplier < 2) {
+                display.style.color = "#0f0";
+            } else if (data.multiplier < 5) {
+                display.style.color = "#ffc107";
+            } else {
+                display.style.color = "#ff4d4d";
+            }
+        });
+
+        socket.on("crash", (data) => {
+            alert("💥 Game Crashed at " + data.crashPoint + "x");
+        });
+
+        socket.on("player_cashout", (data) => {
+            alert(`✅ ${data.player} cashed out at ${data.multiplier}x for $${data.usd}`);
+        });
+
+        function cashOut() {
+            const multiplierText = document.getElementById("multiplier").innerText;
+            const multiplier = parseFloat(multiplierText.split(' ')[1]);
+            socket.emit("cashout", { player: "alice", multiplier });
+        }
+    </script>
+</body>
+
+</html>

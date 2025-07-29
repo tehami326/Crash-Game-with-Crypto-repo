@@ -1,0 +1,133 @@
+{
+	"info": {
+		"_postman_id": "011b9c37-8ec3-4a8c-b36f-dd67f84ca7ab",
+		"name": "localhost:5000",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "35394847",
+		"_collection_link": "https://www.postman.com/tehami123/workspace/crypto-crash-backend/collection/35394847-011b9c37-8ec3-4a8c-b36f-dd67f84ca7ab?action=share&source=collection_link&creator=35394847"
+	},
+	"item": [
+		{
+			"name": "/api/games/cashout",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"player\": \"alice\",\r\n  \"multiplier\": 2.5\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:5000/api/games/cashout",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"games",
+						"cashout"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "/api/games/bet",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"player\": \"alice\",\r\n  \"amount\": 5,\r\n  \"currency\": \"BTC\"\r\n}\r\n\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:5000/api/games/bet",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"games",
+						"bet"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "/api/players/alice",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:5000/api/players/alice",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"players",
+						"alice"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "/api/prices",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:5000/api/prices",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"prices"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "/api/players/bob",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:5000/api/players/bob",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"players",
+						"bob"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
